@@ -1,20 +1,19 @@
 class Order:
-    def __init__(self, order_id, customer, coffee, quantity):
-        self.order_id = order_id
-        self.customer = customer
-        self.coffee = coffee
-        self.quantity = quantity
+    def __init__(self, customer, coffee, price):
+        if not (1.0 <= price <= 10.0):
+            raise ValueError("Price must be between 1.0 and 10.0.")
+        self._customer = customer
+        self._coffee = coffee
+        self._price = price
 
-    def get_order_details(self):
-        return {
-            "order_id": self.order_id,
-            "customer": self.customer,
-            "coffee": self.coffee,
-            "quantity": self.quantity
-        }
+    @property
+    def customer(self):
+        return self._customer
 
-    def update_quantity(self, new_quantity):
-        self.quantity = new_quantity
+    @property
+    def coffee(self):
+        return self._coffee
 
-    def __str__(self):
-        return f"Order {self.order_id}: {self.quantity} x {self.coffee} for {self.customer}"
+    @property
+    def price(self):
+        return self._price

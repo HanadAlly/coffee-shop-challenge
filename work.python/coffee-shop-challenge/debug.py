@@ -1,7 +1,17 @@
-# Contents of /work.python/work.python/coffee-shop-challenge/debug.py
+from customer import Customer
+from coffee import Coffee
+from order import Order
 
-def main():
-    print("Starting the Coffee Shop Challenge application in debug mode...")
+c1 = Customer("Alice")
+c2 = Customer("Bob")
 
-if __name__ == "__main__":
-    main()
+latte = Coffee("Latte")
+mocha = Coffee("Mocha")
+
+c1.create_order(latte, 4.5)
+c1.create_order(mocha, 5.0)
+c2.create_order(latte, 3.0)
+
+print(latte.num_orders())         # 2
+print(latte.average_price())      # 3.75
+print(c1.coffees())               # [latte, mocha]

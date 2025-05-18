@@ -1,21 +1,25 @@
 class Coffee:
-    def __init__(self, name, price, size):
-        self.name = name
-        self.price = price
-        self.size = size
+    def __init__(self, name):
+        if isinstance(name, str) and len(name) >= 3:
+            self._name = name
+            self._orders = []
+        else:
+            raise ValueError("Coffee name must be a string with at least 3 characters.")
 
-    def __str__(self):
-        return f"{self.size} {self.name} - ${self.price:.2f}"
+    @property
+    def name(self):
+        return self._name  # Immutable
 
-    def get_details(self):
-        return {
-            "name": self.name,
-            "price": self.price,
-            "size": self.size
-        }
+    def orders(self):
+        return self._orders
 
-def create_coffee(name, price, size):
-    return Coffee(name, price, size)
+    def customers(self):
+        return list({order.customer for order in self._orders})
 
-def list_coffees(coffee_list):
-    return [str(coffee) for coffee in coffee_list]
+    def num_orders(self):
+        return len(self._orders)
+
+    def average_price(self):
+        if not self._orders:
+            return 0
+        return sum(order.price for order in self._orders) / len(self._orders)
