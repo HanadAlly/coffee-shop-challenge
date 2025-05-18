@@ -30,3 +30,8 @@ Has a price (float between 1.0 and 10.0).
 
 Price and associations are immutable after creation.
 
+## Author 
+Ali Hanad Mohammed.
+
+## Languages Used
+Python.
