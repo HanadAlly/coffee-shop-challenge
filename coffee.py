@@ -8,7 +8,7 @@ class Coffee:
 
     @property
     def name(self):
-        return self._name  # Immutable
+        return self._name
 
     def orders(self):
         return self._orders
@@ -23,3 +23,6 @@ class Coffee:
         if not self._orders:
             return 0
         return sum(order.price for order in self._orders) / len(self._orders)
+
+    def __str__(self):
+        return self._name
